@@ -196,6 +196,7 @@ namespace BoardGameSimulator
 
         public static void MandatorySwedish(Role cardRole, Player invoker, Player affected)
         {
+            //SCRAPPED
             invoker.HeldCards.Add(new Card(cardRole, Card.MandatorySwedish));
         }
 
