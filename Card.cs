@@ -181,7 +181,10 @@ namespace BoardGameSimulator
         {
             if (invoker.TurnsPlayed < 5)
             {
-                invoker.Points += 20;
+                if (!invoker.Engineer)
+                    invoker.Points += 20;
+
+                invoker.PointsPerRoundThisGame += 20;
             }
             else
             {
@@ -191,7 +194,8 @@ namespace BoardGameSimulator
 
         public static void FailedCourse(Role cardRole, Player invoker, Player affected)
         {
-            invoker.Points -= 20;
+                invoker.Points -= 20;
+            invoker.PointsPerRoundThisGame -= 20;
         }
 
         public static void MandatorySwedish(Role cardRole, Player invoker, Player affected)
@@ -207,7 +211,10 @@ namespace BoardGameSimulator
 
         public static void GameTesting(Role cardRole, Player invoker, Player affected)
         {
-            invoker.Points += 20;
+            if (!invoker.Engineer)
+                invoker.Points += 20;
+
+            invoker.PointsPerRoundThisGame += 20;
         }
 
         public static void PrepCourse(Role cardRole, Player invoker, Player affected)
@@ -218,7 +225,10 @@ namespace BoardGameSimulator
             } 
             else
             {
-                invoker.Points += 20;
+                if (!invoker.Engineer)
+                    invoker.Points += 20;
+
+                invoker.PointsPerRoundThisGame += 20;
             }
         }
 
@@ -230,7 +240,12 @@ namespace BoardGameSimulator
         public static void HelpAFriend(Role cardRole, Player invoker, Player affected)
         {
             invoker.Points -= 30;
-            affected.Points += 30;
+            invoker.PointsPerRoundThisGame -= 30;
+
+            if (!affected.Engineer)
+                affected.Points += 30;
+
+            affected.PointsPerRoundThisGame += 30;
         }
 
         public static void SuddenAssignment(Role cardRole, Player invoker, Player affected)
@@ -246,10 +261,14 @@ namespace BoardGameSimulator
             if (dice <= 3)
             {
                 affected.Points -= 30;
+                affected.PointsPerRoundThisGame -= 30;
             }
             else
             {
-                affected.Points += 30;
+                if (!affected.Engineer)
+                    affected.Points += 30;
+
+                affected.PointsPerRoundThisGame += 30;
             }
         }
 
