@@ -194,14 +194,23 @@ namespace BoardGameSimulator
 
         public static void FailedCourse(Role cardRole, Player invoker, Player affected)
         {
-                invoker.Points -= 20;
+            invoker.Points -= 20;
             invoker.PointsPerRoundThisGame -= 20;
         }
 
         public static void MandatorySwedish(Role cardRole, Player invoker, Player affected)
         {
-            //SCRAPPED
-            invoker.HeldCards.Add(new Card(cardRole, Card.MandatorySwedish));
+            if (invoker.TurnsPlayed < 7)
+            {
+                invoker.HeldCards.Add(new Card(cardRole, Card.MandatorySwedish));
+            }
+            else
+            {
+                if (!invoker.Engineer)
+                    invoker.Points += 30;
+
+                invoker.PointsPerRoundThisGame += 30;
+            }
         }
 
         public static void DivineIntervention(Role cardRole, Player invoker, Player affected)

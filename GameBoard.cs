@@ -82,7 +82,7 @@ namespace BoardGameSimulator
                 new Card(Role.Designer, Card.WellRested),
                 new Card(Role.Designer, Card.WellRested),
                 new Card(Role.Analyst, Card.GreatSuccess),
-                new Card(Role.Artist, Card.HelpAFriend),
+                new Card(Role.Artist, Card.MandatorySwedish),
                 new Card(Role.Programmer, Card.DivineIntervention),
                 new Card(Role.Designer, Card.DivineIntervention),
                 new Card(Role.Programmer, Card.FailedCourse),
@@ -102,7 +102,7 @@ namespace BoardGameSimulator
                 new Card(Role.Designer, Card.WellRested),
                 new Card(Role.Designer, Card.WellRested),
                 new Card(Role.Analyst, Card.GreatSuccess),
-                new Card(Role.Artist, Card.HelpAFriend),
+                new Card(Role.Artist, Card.MandatorySwedish),
                 new Card(Role.Programmer, Card.DivineIntervention),
                 new Card(Role.Designer, Card.DivineIntervention)
             };

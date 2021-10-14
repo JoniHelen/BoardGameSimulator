@@ -47,13 +47,21 @@ namespace BoardGameSimulator
                     // Each player's turn
                     for (int index = 0; index < players.Count; index++)
                     {
-                        others = players.Where(x => x.Role != players[index].Role).ToList();
-
-                        if (players[index].Points >= 240 && !players[index].Engineer)
+                        foreach (Player p in players)
                         {
-                            players[index].Points = 240;
-                            players[index].Engineer = true;
+                            if (p.Points >= 240 && !p.Engineer)
+                            {
+                                p.Points = 240;
+                                p.Engineer = true;
+                            }
+
+                            if (p.Engineer && p.Points < 240)
+                            {
+                                p.Engineer = false;
+                            }
                         }
+
+                        others = players.Where(x => x.Role != players[index].Role).ToList();
 
                         players[index].TurnsPlayed++;
 
@@ -67,9 +75,32 @@ namespace BoardGameSimulator
 
                             while (players[index].Rolls > 0)
                             {
+                                foreach (Player p in players)
+                                {
+                                    if (p.Points >= 240 && !p.Engineer)
+                                    {
+                                        p.Points = 240;
+                                        p.Engineer = true;
+                                    }
+
+                                    if (p.Engineer && p.Points < 240)
+                                    {
+                                        p.Engineer = false;
+                                    }
+                                }
+
                                 // Throw dice
                                 dice = rand.Next(1, 6);
                                 players[index].Rolls--;
+
+                                if (players[index].HeldCards.Any(x => x.Effect == Card.MandatorySwedish))
+                                {
+                                    if (dice == 6)
+                                    {
+                                        players[index].HeldCards.RemoveAll(x => x.Effect == Card.MandatorySwedish);
+                                        gameBoard.Events.Add(new Card(Role.Programmer, Card.MandatorySwedish));
+                                    }
+                                }
 
                                 // Move
                                 players[index].Position += dice;
@@ -215,8 +246,12 @@ namespace BoardGameSimulator
                                     }
                                     else if (gameBoard.Events[dice].Effect == Card.MandatorySwedish)
                                     {
+                                        if (players[index].TurnsPlayed < 7)
+                                        {
+                                            gameBoard.Events.Remove(gameBoard.Events[dice]);
+                                        }
                                         gameBoard.Events[dice].Effect(gameBoard.Events[dice].Role, players[index], players[index]);
-                                        gameBoard.Events.Remove(gameBoard.Events[dice]);
+
                                     }
                                     else
                                     {
@@ -231,7 +266,7 @@ namespace BoardGameSimulator
                                     players[index].Engineer = true;
                                 }
 
-                                if (players.All(x => x.Engineer))
+                                if (players.All(x => x.Engineer) && players.All(x => !x.HeldCards.Any(y => y.Effect == Card.MandatorySwedish)))
                                 {
                                     finish = 4;
                                     break;
@@ -243,7 +278,7 @@ namespace BoardGameSimulator
 
                 if (finish != 4)
                 {
-                    finish = players.Count(x => x.Engineer);
+                    finish = players.Count(x => x.Engineer && !x.HeldCards.Any(x => x.Effect == Card.MandatorySwedish));
                 }
 
                 finishes[i] = finish;
