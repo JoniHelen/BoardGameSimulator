@@ -8,12 +8,9 @@ namespace BoardGameSimulator
 {
     public class Simulator
     {
-        public static int PlayerAmount = 0;
         static void Main(string[] args)
         {
             List<Player> players = new List<Player> { new Player(Role.Programmer), new Player(Role.Analyst), new Player(Role.Designer), new Player(Role.Artist) };
-            
-            Simulator.PlayerAmount = players.Count;
 
             List<Player> others = new List<Player>();
             
@@ -45,7 +42,7 @@ namespace BoardGameSimulator
                 finish = 0;
                 
                 // Turn limit
-                for (int j = 0; j < 12; j++)
+                for (int j = 0; j < 12 + (4 - players.Count) * 3; j++)
                 {
                     // Each player's turn
                     for (int index = 0; index < players.Count; index++)
