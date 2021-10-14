@@ -24,31 +24,31 @@ namespace BoardGameSimulator
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 60;
+                        invoker.Points += 60 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 60;
+                        affected.Points += 60 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
-                    invoker.PointsPerRoundThisGame += 60;
-                    affected.PointsPerRoundThisGame += 60;
+                    invoker.PointsPerRoundThisGame += 60 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 60 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 else
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 70;
+                        invoker.Points += 70 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 70;
+                        affected.Points += 70 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
-                    invoker.PointsPerRoundThisGame += 70;
-                    affected.PointsPerRoundThisGame += 70;
+                    invoker.PointsPerRoundThisGame += 70 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 70 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 invoker.HeldCards.RemoveAll(x => x.Effect == Card.GreatSuccess);
             }
@@ -58,35 +58,35 @@ namespace BoardGameSimulator
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 30;
+                        invoker.Points += 30 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 30;
+                        affected.Points += 30 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
-                    invoker.PointsPerRoundThisGame += 30;
-                    affected.PointsPerRoundThisGame += 30;
+                    invoker.PointsPerRoundThisGame += 30 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 30 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 else
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 40;
+                        invoker.Points += 40 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 40;
+                        affected.Points += 40 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
-                    invoker.PointsPerRoundThisGame += 40;
-                    affected.PointsPerRoundThisGame += 40;
+                    invoker.PointsPerRoundThisGame += 40 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 40 + (4 - Simulator.PlayerAmount) * 5;
                 }
             }
             
@@ -100,31 +100,31 @@ namespace BoardGameSimulator
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 70;
+                        invoker.Points += 70 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 70;
+                        affected.Points += 70 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
-                    invoker.PointsPerRoundThisGame += 70;
-                    affected.PointsPerRoundThisGame += 70;
+                    invoker.PointsPerRoundThisGame += 70 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 70 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 else
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 90;
+                        invoker.Points += 90 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 90;
+                        affected.Points += 90 + (4 - Simulator.PlayerAmount) * 5;
                     }
 
-                    invoker.PointsPerRoundThisGame += 90;
-                    affected.PointsPerRoundThisGame += 90;
+                    invoker.PointsPerRoundThisGame += 90 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 90 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 invoker.HeldCards.RemoveAll(x => x.Effect == Card.GreatSuccess);
             }
@@ -134,35 +134,35 @@ namespace BoardGameSimulator
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 40;
+                        invoker.Points += 40 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 40;
+                        affected.Points += 40 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
-                    invoker.PointsPerRoundThisGame += 40;
-                    affected.PointsPerRoundThisGame += 40;
+                    invoker.PointsPerRoundThisGame += 40 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 40 + (4 - Simulator.PlayerAmount) * 5;
                 }
                 else
                 {
                     if (!invoker.Engineer)
                     {
-                        invoker.Points += 60;
+                        invoker.Points += 60 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
                     if (!affected.Engineer)
                     {
-                        affected.Points += 60;
+                        affected.Points += 60 + (4 - Simulator.PlayerAmount) * 5;
 
                     }
 
-                    invoker.PointsPerRoundThisGame += 60;
-                    affected.PointsPerRoundThisGame += 60;
+                    invoker.PointsPerRoundThisGame += 60 + (4 - Simulator.PlayerAmount) * 5;
+                    affected.PointsPerRoundThisGame += 60 + (4 - Simulator.PlayerAmount) * 5;
                 }
             }
         }
@@ -182,9 +182,9 @@ namespace BoardGameSimulator
             if (invoker.TurnsPlayed < 5)
             {
                 if (!invoker.Engineer)
-                    invoker.Points += 20;
+                    invoker.Points += 20 + (4 - Simulator.PlayerAmount) * 5;
 
-                invoker.PointsPerRoundThisGame += 20;
+                invoker.PointsPerRoundThisGame += 20 + (4 - Simulator.PlayerAmount) * 5;
             }
             else
             {
@@ -194,8 +194,8 @@ namespace BoardGameSimulator
 
         public static void FailedCourse(Role cardRole, Player invoker, Player affected)
         {
-            invoker.Points -= 20;
-            invoker.PointsPerRoundThisGame -= 20;
+            invoker.Points -= 20 + (4 - Simulator.PlayerAmount) * 5;
+            invoker.PointsPerRoundThisGame -= 20 + (4 - Simulator.PlayerAmount) * 5;
         }
 
         public static void MandatorySwedish(Role cardRole, Player invoker, Player affected)
@@ -207,9 +207,9 @@ namespace BoardGameSimulator
             else
             {
                 if (!invoker.Engineer)
-                    invoker.Points += 30;
+                    invoker.Points += 30 + (4 - Simulator.PlayerAmount) * 5;
 
-                invoker.PointsPerRoundThisGame += 30;
+                invoker.PointsPerRoundThisGame += 30 + (4 - Simulator.PlayerAmount) * 5;
             }
         }
 
@@ -221,9 +221,9 @@ namespace BoardGameSimulator
         public static void GameTesting(Role cardRole, Player invoker, Player affected)
         {
             if (!invoker.Engineer)
-                invoker.Points += 20;
+                invoker.Points += 20 + (4 - Simulator.PlayerAmount) * 5;
 
-            invoker.PointsPerRoundThisGame += 20;
+            invoker.PointsPerRoundThisGame += 20 + (4 - Simulator.PlayerAmount) * 5;
         }
 
         public static void PrepCourse(Role cardRole, Player invoker, Player affected)
@@ -235,9 +235,9 @@ namespace BoardGameSimulator
             else
             {
                 if (!invoker.Engineer)
-                    invoker.Points += 20;
+                    invoker.Points += 20 + (4 - Simulator.PlayerAmount) * 5;
 
-                invoker.PointsPerRoundThisGame += 20;
+                invoker.PointsPerRoundThisGame += 20 + (4 - Simulator.PlayerAmount) * 5;
             }
         }
 
@@ -248,13 +248,13 @@ namespace BoardGameSimulator
 
         public static void HelpAFriend(Role cardRole, Player invoker, Player affected)
         {
-            invoker.Points -= 30;
-            invoker.PointsPerRoundThisGame -= 30;
+            invoker.Points -= 30 + (4 - Simulator.PlayerAmount) * 5;
+            invoker.PointsPerRoundThisGame -= 30 + (4 - Simulator.PlayerAmount) * 5;
 
             if (!affected.Engineer)
-                affected.Points += 30;
+                affected.Points += 30 + (4 - Simulator.PlayerAmount) * 5;
 
-            affected.PointsPerRoundThisGame += 30;
+            affected.PointsPerRoundThisGame += 30 + (4 - Simulator.PlayerAmount) * 5;
         }
 
         public static void SuddenAssignment(Role cardRole, Player invoker, Player affected)
@@ -269,15 +269,15 @@ namespace BoardGameSimulator
 
             if (dice <= 3)
             {
-                affected.Points -= 30;
-                affected.PointsPerRoundThisGame -= 30;
+                affected.Points -= 30 + (4 - Simulator.PlayerAmount) * 5;
+                affected.PointsPerRoundThisGame -= 30 + (4 - Simulator.PlayerAmount) * 5;
             }
             else
             {
                 if (!affected.Engineer)
-                    affected.Points += 30;
+                    affected.Points += 30 + (4 - Simulator.PlayerAmount) * 5;
 
-                affected.PointsPerRoundThisGame += 30;
+                affected.PointsPerRoundThisGame += 30 + (4 - Simulator.PlayerAmount) * 5;
             }
         }
 

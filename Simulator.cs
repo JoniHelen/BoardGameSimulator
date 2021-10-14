@@ -8,10 +8,13 @@ namespace BoardGameSimulator
 {
     public class Simulator
     {
+        public static int PlayerAmount = 0;
         static void Main(string[] args)
         {
-            List<Player> players = new List<Player> { new Player(Role.Programmer), new Player(Role.Analyst), new Player(Role.Artist), new Player(Role.Designer) };
+            List<Player> players = new List<Player> { new Player(Role.Programmer), new Player(Role.Analyst), new Player(Role.Designer), new Player(Role.Artist) };
             
+            Simulator.PlayerAmount = players.Count;
+
             List<Player> others = new List<Player>();
             
             Random rand = new Random();
@@ -98,7 +101,7 @@ namespace BoardGameSimulator
                                     if (dice == 6)
                                     {
                                         players[index].HeldCards.RemoveAll(x => x.Effect == Card.MandatorySwedish);
-                                        gameBoard.Events.Add(new Card(Role.Programmer, Card.MandatorySwedish));
+                                        gameBoard.Events.Add(new Card(Role.none, Card.MandatorySwedish));
                                     }
                                 }
 
@@ -119,7 +122,7 @@ namespace BoardGameSimulator
 
                                     if (players[index].HeldCards.Exists(x => x.Effect == Card.GreatSuccess))
                                     {
-                                        gameBoard.Events.Add(new Card(Role.Programmer, Card.GreatSuccess));
+                                        gameBoard.Events.Add(new Card(Role.none, Card.GreatSuccess));
                                     }
 
                                     if (players[index].Engineer)
@@ -141,7 +144,7 @@ namespace BoardGameSimulator
                                         }
                                         else
                                         {
-                                            gameBoard.Projects[dice].Effect(gameBoard.Projects[dice].Role, players[index], others[others.FindIndex(x => x.Role == gameBoard.Projects[dice].Role)]);
+                                            gameBoard.Projects[dice].Effect(gameBoard.Projects[dice].Role, players[index], others.FindIndex(x => x.Role == gameBoard.Projects[dice].Role) != - 1 ? others[others.FindIndex(x => x.Role == gameBoard.Projects[dice].Role)] : others.MinBy(x => x.Points));
                                         }
                                     }
                                 }
@@ -167,7 +170,7 @@ namespace BoardGameSimulator
                                         if (found)
                                         {
                                             holder.HeldCards.Remove(holder.HeldCards.Find(x => x.Effect == Card.DivineIntervention));
-                                            gameBoard.Events.Add(new Card(Role.Programmer, Card.DivineIntervention));
+                                            gameBoard.Events.Add(new Card(Role.none, Card.DivineIntervention));
                                         }
                                         else
                                         {
@@ -191,7 +194,7 @@ namespace BoardGameSimulator
                                         if (found)
                                         {
                                             holder.HeldCards.Remove(holder.HeldCards.Find(x => x.Effect == Card.DivineIntervention));
-                                            gameBoard.Events.Add(new Card(Role.Programmer, Card.DivineIntervention));
+                                            gameBoard.Events.Add(new Card(Role.none, Card.DivineIntervention));
                                         }
                                         else
                                         {
@@ -215,7 +218,7 @@ namespace BoardGameSimulator
                                         if (found)
                                         {
                                             holder.HeldCards.Remove(holder.HeldCards.Find(x => x.Effect == Card.DivineIntervention));
-                                            gameBoard.Events.Add(new Card(Role.Programmer, Card.DivineIntervention));
+                                            gameBoard.Events.Add(new Card(Role.none, Card.DivineIntervention));
                                         }
                                         else
                                         {
@@ -268,7 +271,7 @@ namespace BoardGameSimulator
 
                                 if (players.All(x => x.Engineer) && players.All(x => !x.HeldCards.Any(y => y.Effect == Card.MandatorySwedish)))
                                 {
-                                    finish = 4;
+                                    finish = players.Count;
                                     break;
                                 }
                             }
@@ -276,9 +279,9 @@ namespace BoardGameSimulator
                     }
                 }
 
-                if (finish != 4)
+                if (finish != players.Count)
                 {
-                    finish = players.Count(x => x.Engineer && !x.HeldCards.Any(x => x.Effect == Card.MandatorySwedish));
+                    finish = players.Count(x => x.Engineer && !x.HeldCards.Any(y => y.Effect == Card.MandatorySwedish));
                 }
 
                 finishes[i] = finish;
@@ -349,7 +352,8 @@ namespace BoardGameSimulator
         Programmer,
         Designer,
         Analyst,
-        Artist
+        Artist,
+        none
     }
 
     public enum Tile
